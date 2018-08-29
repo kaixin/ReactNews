@@ -22,3 +22,10 @@ html {
     padding-left: 10px;
     color: #2db7f5;
 }
+
+#mobile i {
+    font-size: 0.5rem;
+    float: right;
+    padding-right: 0.3rem;
+    padding-top: 0.3rem;
+}
