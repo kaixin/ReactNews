@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 import axios from 'axios'
 
 
-class PCNewsBlock extends React.Component {
+class MobileNewsList extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -62,4 +62,4 @@ class PCNewsBlock extends React.Component {
     }
 }
 
-export default PCNewsBlock;
+export default MobileNewsList;
