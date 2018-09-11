@@ -5,6 +5,8 @@ import MediaQuery from 'react-responsive';
 import PCIndex from './js/PCIndex';
 import MobileIndex from './js/MobileIndex.js'
 
+import PCNewsDetails from './js/components/PCNewsDetails'
+
 import 'antd/dist/antd.css';
 import './css/pc.css'
 import './css/mobile.css'
@@ -14,7 +16,10 @@ class App extends Component {
         return (
             <div className="App">
                 <MediaQuery query='(min-device-width: 1224px)'>
-                    <PCIndex></PCIndex>
+                    <Router history={hashHistory}>
+                        <Route path="/" component={PCIndex}></Route>
+                        <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>
+                    </Router>
                 </MediaQuery>
 
                 <MediaQuery query='(max-device-width: 1224px)'>
