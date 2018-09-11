@@ -6,6 +6,7 @@ import PCIndex from './js/PCIndex';
 import MobileIndex from './js/MobileIndex.js'
 
 import PCNewsDetails from './js/components/PCNewsDetails'
+import MobileNewsDetails from './js/components/MobileNewsDetails'
 
 import 'antd/dist/antd.css';
 import './css/pc.css'
@@ -23,7 +24,10 @@ class App extends Component {
                 </MediaQuery>
 
                 <MediaQuery query='(max-device-width: 1224px)'>
-                    <MobileIndex></MobileIndex>
+                    <Router history={hashHistory}>
+                        <Route path="/" component={MobileIndex}></Route>
+                        <Route path="/details/:uniquekey" component={MobileNewsDetails}></Route>
+                    </Router>
                 </MediaQuery>
             </div>
         );
