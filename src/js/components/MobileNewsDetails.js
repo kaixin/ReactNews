@@ -5,7 +5,9 @@ import axios from 'axios'
 import MobileHeader from './MobileHeader'
 import MobileFooter from './MobileFooter'
 
-import PCNewsImageBlock from './PCNewsImageBlock'
+import CommonComment from './CommonComment'
+
+
 
 
 class MobileNewsDetails extends React.Component {
@@ -41,6 +43,8 @@ class MobileNewsDetails extends React.Component {
                 <Row>
                     <Col span={24}>
                         <span dangerouslySetInnerHTML={this.generateMarkup()}></span>
+                        <hr/>
+                        <CommonComment uniquekey={this.props.params.uniquekey} />
                     </Col>
                 </Row>
                 <MobileFooter></MobileFooter>

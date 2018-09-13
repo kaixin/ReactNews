@@ -6,6 +6,7 @@ import PCHeader from './PCHeader'
 import PCFooter from './PCFooter'
 
 import PCNewsImageBlock from './PCNewsImageBlock'
+import CommonComment from './CommonComment'
 
 
 class PCNewsDetails extends React.Component {
@@ -42,6 +43,8 @@ class PCNewsDetails extends React.Component {
                     <Col span={2}></Col>
                     <Col span={14}>
                         <span dangerouslySetInnerHTML={this.generateMarkup()}></span>
+                        <hr/>
+                        <CommonComment uniquekey={this.props.params.uniquekey} />
                     </Col>
                     <Col span={6}>
                         <PCNewsImageBlock count={40} type="top" imgWidth="150px" title="相关新闻" />
