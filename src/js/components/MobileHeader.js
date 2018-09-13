@@ -67,7 +67,7 @@ class MobileHeader extends React.Component {
         const { getFieldDecorator } = this.props.form;
         const isUserLogin = this.state.isUserLogin;
         const loginMenu = isUserLogin ?
-            <Link target="_blank">
+            <Link to="/usercenter">
                 <Icon type="inbox" />
             </Link>
             :

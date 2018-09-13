@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Card, Form, Button, Input } from 'antd'
+import { Row, Col, Card, Form, Button, Input, notification } from 'antd'
 import axios from 'axios'
 
 const FormItem = Form.Item;
@@ -12,11 +12,11 @@ class CommonComment extends React.Component {
             comments: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addToCollection = this.addToCollection.bind(this);
     }
 
     componentWillMount() {
         axios.get("http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey=" + this.props.uniquekey).then(resp => {
-            console.log(resp.data);    
         this.setState({
                 comments: resp.data
             });
@@ -27,8 +27,17 @@ class CommonComment extends React.Component {
         var self = this;
         e.preventDefault();
         var formData = this.props.form.getFieldsValue();
-        axios.get("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=111" + "&uniquekey=" + this.props.uniquekey + "&commnet=" + formData.userComment).then(resp => {
+        axios.get("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=123" + "&uniquekey=" + this.props.uniquekey + "&commnet=" + formData.userComment).then(resp => {
             self.componentWillMount();
+        });
+    }
+
+    addToCollection() {
+        axios.get("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid=123" + "&uniquekey=" + this.props.uniquekey).then((resp) => {
+            notification['success']({
+                message: '收藏成功',
+                description: '文章收藏成功，可以去收藏列表中查看收藏的文章'
+            });
         });
     }
 
@@ -59,6 +68,9 @@ class CommonComment extends React.Component {
                             </FormItem>
                             <FormItem label="提交">
                                 <Button type="primary" htmlType="submit">提交</Button>
+                            </FormItem>
+                            <FormItem label="收藏">
+                                <Button type="primary" htmlType="button" onClick={this.addToCollection}>收藏文章</Button>
                             </FormItem>
                         </Form>
                     </Col>
